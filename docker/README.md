@@ -23,6 +23,8 @@ Quick overview for you who hasn't worked with docker before
 - `docker logs app_db` // postgres logs (if container is running)
 - `docker logs app_pgadmin` // pgadmin logs (if container is running)
 
+> Note, the commands containing "compose" only works if you're in `/docker` so the `compose.dev.yml` file is in your current directory.
+
 ## Access
 
 - The database is exposed on 0.0.0.0:5432 (localhost:5432)
@@ -33,7 +35,7 @@ You can connect to the database directly from CLI or with a programming language
 Here are the credentials:
 
 ```DB creds
-Username:   admin
+Username:   appadmin
 Password:   admin
 ```
 
@@ -51,7 +53,7 @@ Password:   admin
 
 - After you sign in, you can connect to the db by clicking `Add new server`
 - Go to `Connection` tab, and fill in exactly like this:
- 
+
 <img src='pgadmin_login_instructions.png'>
 
 <a href="https://www.youtube.com/watch?v=Gjnup-PuquQ">Docker in 100 seconds </a> if u wanna learn more :)
