@@ -51,6 +51,7 @@ Password:   admin
 
 - After you sign in, you can connect to the db by clicking `Add new server`
 - Go to `Connection` tab, and fill in exactly like this:
-  ![[pgadmin_login_instructions.png]]
+ 
+<img src='pgadmin_login_instructions.png'>
 
 <a href="https://www.youtube.com/watch?v=Gjnup-PuquQ">Docker in 100 seconds </a> if u wanna learn more :)
