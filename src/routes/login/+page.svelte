@@ -1,6 +1,12 @@
 <script>
+    import { goto } from "$app/navigation";
+
+    function handleRegisterClick() {
+        goto('/signup');
+    }
 
 </script>
+
 <div id="wrapper">
 <div id="image">
     <p>Replace text with image</p>
@@ -29,7 +35,7 @@
     </div>
     <button id="login-button" type="submit">Login</button>
     </form>
-    <button id="register-button" type="button">Register</button>
+    <button id="register-button" type="button" onclick={handleRegisterClick}>Register</button>
     <a id="forgotpassword" href="forgotpassword">Forgot password</a>
 </div>
 </div>
@@ -94,12 +100,6 @@
     #forgotpassword:hover {
         text-decoration: underline;
     }
-    
-    /* h1 {
-        font-size: 70px;
-        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-        
-    } */
 
     #login-info {
         flex: 3;
