@@ -7,7 +7,7 @@
 			<img id="logo" src="_assets/hot-dog-text-logo.png" alt="HOT DOG logo" />
 		</div>
 
-		<h2>Register</h2>
+		<h2>Create Account</h2>
 		<form>
 			<div id="inputs">
 				<div class="input-row">
@@ -35,6 +35,8 @@
 			</div>
 			<button id="signup-button" type="submit"> Sign Up </button>
 		</form>
+        <p id="login"> Already have an account? <a id="login-link" class="hyperlinks" href="/login">Log in</a> </p> 
+
 	</div>
 </div>
 
@@ -42,6 +44,7 @@
 	#image {
 		display: flex;
 		align-items: center;
+        flex: 5;
 	}
 
 	#inputs {
@@ -65,13 +68,9 @@
 		height: 100vh;
 	}
 
-	#image {
-		flex: 5;
-	}
-
     #logo-wrapper {
         margin-top: 20px;
-		width: 350px;
+		width: 250px;
         padding-bottom: 0px;
 	}
     
@@ -129,4 +128,22 @@
 	#signup-button:active {
 		background-color: #fd3599;
 	}
+
+    .hyperlinks {
+        color: #a51c2b;
+        text-decoration: none;
+    }
+
+    .hyperlinks:hover {
+        text-decoration: underline;
+    }
+
+    #login {
+        margin-top: 20px;
+        font-size: 14px;
+    }
+
+    #login-link {
+        font-weight: bold;
+    }
 </style>
