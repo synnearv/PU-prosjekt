@@ -64,14 +64,12 @@
 					<input name="username" placeholder="Username" required />
 				</div>
 				<div class="input-row">
-					<input name="password" placeholder="Password" required bind:value={password} oninput={validatePassword} />
+					<input class:unvalid-password ={isMissingPasswordRequirements} name="password" placeholder="Password" required bind:value={password} oninput={validatePassword} />
 				</div>
 				<div id="password-message-area">	
 					{#if isMissingPasswordRequirements}
 							<p id="password-message">{passwordMessage}</p>
 					{/if}
-
-				
 				</div>
 			</div>
 			<div id="terms-and-service">
@@ -90,22 +88,6 @@
 		display: flex;
 		align-items: center;
         flex: 5;
-	}
-
-	#inputs {
-		display: flex;
-		flex-direction: column;
-		gap: 15px;
-	}
-
-	.input-row {
-		display: flex;
-		align-items: center;
-	}
-
-	.input-row input {
-		padding: 10px;
-		width: 250px;
 	}
 
 	#wrapper {
@@ -146,6 +128,57 @@
 		align-items: center;
 		place-items: center;
 		background-color: rgb(243, 243, 243);
+	}
+
+	#inputs {
+		display: flex;
+		flex-direction: column;
+		gap: 15px;
+		width: 270px;
+	}
+
+	.input-row {
+		display: flex;
+		align-items: center;
+	}
+
+	.input-row input {
+		padding: 10px;
+		width: 250px;
+		border: #767676 1px solid; 
+		border-radius: 4px;
+	 }
+
+	.input-row input:focus {
+		outline: #a51c2b 2px solid; 
+		border: #a51c2b 1px solid; 
+		border-radius: 4px;
+	}
+
+	.input-row input.unvalid-password {
+		border: red 1px solid; 
+	}
+
+	.input-row input.unvalid-password:focus {
+		outline: red 2px solid; 
+		border: red 1px solid; 
+	}
+
+		#password-message-area{
+		margin-top: -5px;
+		height: 45px;
+		padding: 0px;
+	}
+
+	#password-message {
+		margin: 0px;
+		font-size: 10px;
+		color: red;
+	}
+
+
+	#password-message {
+		outline: red;
 	}
 
 	#terms-and-service {
