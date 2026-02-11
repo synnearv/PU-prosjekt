@@ -1,3 +1,44 @@
+<script lang="ts">
+	let password = $state<string>("");
+	let passwordMessage = $state<string>("Password must include: ")
+
+	const upperCaseLetterRegEx: RegExp = /.*?[A-Z]/;
+	const lowerCaseLetterRegEx: RegExp = /.*?[a-z]/;
+	const digitRegEx: RegExp = /.*?[0-9]/;
+	const specialCharacterRegEx: RegExp = /.*?[#?!@$%&*-]/;
+	const enoughCharactersRegEx: RegExp = /.{8,}/;
+
+	let missingPasswordRequirements = $state<string[]>([]);
+	const missingUpperCaseLetter: string = "an uppercase letter (A-Z)";
+	const missingLowerCaseLetter: string = "a lowercase letter (a-z)";
+	const missingDigit: string = "a digit (0-9)";
+	const missingSpecialCharacter: string = "a special character (#?!@$%&*-)";
+	const missingEnoughCharacters: string = "at least 8 characters";
+
+	let isMissingPasswordRequirements = $derived<boolean>(password !== "" && missingPasswordRequirements.length > 0);
+
+	const validatePassword = () => {
+		missingPasswordRequirements = [];
+		passwordMessage = "Password must include: ";
+		if (!upperCaseLetterRegEx.test(password)) {
+			missingPasswordRequirements.push(missingUpperCaseLetter)
+		}
+		if (!lowerCaseLetterRegEx.test(password)) {
+			missingPasswordRequirements.push(missingLowerCaseLetter)
+		}
+		if (!digitRegEx.test(password)) {
+			missingPasswordRequirements.push(missingDigit)
+		}
+		if (!specialCharacterRegEx.test(password)) {
+			missingPasswordRequirements.push(missingSpecialCharacter)
+		}
+		if (!enoughCharactersRegEx.test(password)) {
+			missingPasswordRequirements.push(missingEnoughCharacters)
+		}
+
+		passwordMessage = passwordMessage + missingPasswordRequirements.join(", ")
+	}
+</script>
 <div id="wrapper">
 	<div id="image">
 		<p>Replace text with image</p>
@@ -23,10 +64,14 @@
 					<input name="username" placeholder="Username" required />
 				</div>
 				<div class="input-row">
-					<input name="password" placeholder="Password" required />
+					<input name="password" placeholder="Password" required bind:value={password} oninput={validatePassword} />
 				</div>
-				<div class="input-row">
-					<input name="confirm-passowrd" placeholder="Confirm Password" required />
+				<div id="password-message-area">	
+					{#if isMissingPasswordRequirements}
+							<p id="password-message">{passwordMessage}</p>
+					{/if}
+
+				
 				</div>
 			</div>
 			<div id="terms-and-service">
