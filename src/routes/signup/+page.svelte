@@ -2,6 +2,7 @@
 	let password = $state<string>("");
 	let passwordMessage = $state<string>("Password must include: ");
 	let type = $state<string>("password");
+	let passwordInput: HTMLInputElement;
 
 	const upperCaseLetterRegEx: RegExp = /.*?[A-Z]/;
 	const lowerCaseLetterRegEx: RegExp = /.*?[a-z]/;
@@ -47,6 +48,13 @@
 			type = "password"; 	
 		}
 	}
+
+	const handleSubmit = (event: SubmitEvent) => {
+		if (isMissingPasswordRequirements) {
+			event.preventDefault();
+			passwordInput.focus()
+		}
+	}
 </script>
 <div id="wrapper">
 	<div id="image">
@@ -58,7 +66,7 @@
 		</div>
 
 		<h2>Create Account</h2>
-		<form>
+		<form onsubmit={handleSubmit}>
 			<div id="inputs">
 				<div class="input-row">
 					<input name="first-name" placeholder="First Name" required />
@@ -73,7 +81,7 @@
 					<input name="username" placeholder="Username" required />
 				</div>
 				<div class="input-row input-row-password">
-					<input id="password-input" type={type} class:unvalid-password ={isMissingPasswordRequirements} name="password" placeholder="Password" required bind:value={password} oninput={validatePassword} />
+					<input id="password-input" type={type} class:unvalid-password ={isMissingPasswordRequirements} name="password" placeholder="Password" required bind:value={password} oninput={validatePassword} bind:this={passwordInput} />
 					<button tabindex="-1" type="button" id="eye-icons-wrapper" onclick={changePasswordVisibility}>
 						{#if type==="password"}
 						<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke=var(--color-border-grey) class="eye-icon">
@@ -119,9 +127,7 @@
 		--color-primary: #e982b5;
 		--color-primary_active: #d13576;
 		--color-text_muted: #9ca3af;
-		--color-border: #d1d5db;
- 
-		
+		--color-border: #d1d5db;		
 	}
 	#image {
 		display: flex;
