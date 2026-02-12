@@ -23,7 +23,7 @@
 		passwordMessage = "Password must include: ";
 		if (!upperCaseLetterRegEx.test(password)) {
 			missingPasswordRequirements.push(missingUpperCaseLetter)
-		}
+		}	
 		if (!lowerCaseLetterRegEx.test(password)) {
 			missingPasswordRequirements.push(missingLowerCaseLetter)
 		}
@@ -76,11 +76,11 @@
 					<input id="password-input" type={type} class:unvalid-password ={isMissingPasswordRequirements} name="password" placeholder="Password" required bind:value={password} oninput={validatePassword} />
 					<button tabindex="-1" type="button" id="eye-icons-wrapper" onclick={changePasswordVisibility}>
 						{#if type==="password"}
-						<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="eye-icon">
+						<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke=var(--color-border-grey) class="eye-icon">
   							<path stroke-linecap="round" stroke-linejoin="round" d="M3.98 8.223A10.477 10.477 0 0 0 1.934 12C3.226 16.338 7.244 19.5 12 19.5c.993 0 1.953-.138 2.863-.395M6.228 6.228A10.451 10.451 0 0 1 12 4.5c4.756 0 8.773 3.162 10.065 7.498a10.522 10.522 0 0 1-4.293 5.774M6.228 6.228 3 3m3.228 3.228 3.65 3.65m7.894 7.894L21 21m-3.228-3.228-3.65-3.65m0 0a3 3 0 1 0-4.243-4.243m4.242 4.242L9.88 9.88" />
 						</svg>
 						{:else}
-						<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="eye-icon">
+						<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke=var(--color-border-grey) class="eye-icon">
 							<path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
 							<path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
 						</svg>
@@ -105,6 +105,24 @@
 </div>
 
 <style>
+	:root {
+		--color-text-logo: #a51c2b;
+		--color-background: rgb(243, 243, 243);
+		--color-border-grey:  #767676;
+		--color-error: red;
+		--color-hot-pink: #ff77bb;
+		--color-hot-pink-hover: #fa59a9;
+		--color-hot-pink-active: #fa59a9;
+		/* --color-background: #f7f8fa; */
+		--color-surface: #ffff;
+		--color_text_primary: #1f2937;
+		--color-primary: #e982b5;
+		--color-primary_active: #d13576;
+		--color-text_muted: #9ca3af;
+		--color-border: #d1d5db;
+ 
+		
+	}
 	#image {
 		display: flex;
 		align-items: center;
@@ -148,7 +166,7 @@
 		flex-direction: column;
 		align-items: center;
 		place-items: center;
-		background-color: rgb(243, 243, 243);
+		background-color: var(--color-background);
 	}
 
 	#inputs {
@@ -166,13 +184,13 @@
 	.input-row input {
 		padding: 10px;
 		width: 250px;
-		border: #767676 1px solid; 
+		border: var(--color-border-grey) 1px solid; 
 		border-radius: 4px;
 	 }
 
 	.input-row input:focus {
-		outline: #a51c2b 2px solid; 
-		border: #a51c2b 1px solid; 
+		outline: var(--color-text-logo) 2px solid; 
+		border: var(--color-text-logo) 1px solid; 
 		border-radius: 4px;
 	}
 
@@ -200,12 +218,12 @@
 	}
 
 	.input-row input.unvalid-password {
-		border: red 1px solid; 
+		border: var(--color-error) 1px solid; 
 	}
 
 	.input-row input.unvalid-password:focus {
-		outline: red 2px solid; 
-		border: red 1px solid; 
+		outline: var(--color-error) 2px solid; 
+		border: var(--color-error) 1px solid; 
 	}
 
 	#password-message-area{
@@ -217,7 +235,7 @@
 	#password-message {
 		margin: 0px;
 		font-size: 10px;
-		color: red;
+		color: var(--color-error);
 	}
 
 	#terms-and-service {
@@ -227,7 +245,7 @@
 
 	#signup-button {
 		margin-top: 5px;
-		background-color: #ff77bb;
+		background-color: var(--color-hot-pink);
 		color: white;
 		border: solid black 0.5px;
 		width: 200px;
@@ -239,15 +257,15 @@
 	}
 
 	#signup-button:hover {
-		background-color: #fa59a9;
+		background-color: var(--color-hot-pink-hover);
 	}
 
 	#signup-button:active {
-		background-color: #fd3599;
+		background-color: var(--color-hot-pink-active);
 	}
 
     .hyperlinks {
-        color: #a51c2b;
+        color: var(--color-text-logo);
         text-decoration: none;
     }
 
