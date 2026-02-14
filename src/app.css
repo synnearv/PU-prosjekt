@@ -1,16 +1,29 @@
-:root {
-    background-color: white;
+[data-theme='light'] {
+    --primary-color: #DC143C;
+    --secondary-color: #F75270;
+    --font-color: #000000;
+    --bg-color: #f3faff;
+    --nav-color: #ffffff;
+    --heading-color: #ffee00;
+}
 
-    /* Text */
+[data-theme='dark'] {
+    --primary-color: #F75270;
+    --secondary-color: #F7CAC9;
+    --font-color: #ffffff;
+    --bg-color: #1c1e22;
+    --nav-color: #23272f;
+    --heading-color: #ffee00;
+}
+
+:root {
+    background-color: var(--bg-color);
+
+    /* Font */
     font-family: Verdana, sans-serif;
     font-weight: 500;
     font-style: normal;
-}
-
-@media (prefers-color-scheme: dark) {
-:root {
-    /* background-color: #26202b; */
-}
+    color: var(--font-color);
 }
 
 body {
