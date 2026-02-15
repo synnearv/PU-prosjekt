@@ -8,8 +8,8 @@
 }
 
 [data-theme='dark'] {
-    --primary-color: #F75270;
-    --secondary-color: #F7CAC9;
+    --primary-color: #F7CAC9;
+    --secondary-color: #F75270;
     --font-color: #ffffff;
     --bg-color: #1c1e22;
     --nav-color: #23272f;
