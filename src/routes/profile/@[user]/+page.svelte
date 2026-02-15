@@ -1,40 +1,29 @@
 
 <script lang="ts">
+	import Avatar from '$lib/components/Avatar.svelte';
     import DogIcon from './DogIcon.svelte';
+
+    import type { PageProps } from './$types';
+    let { data }: PageProps = $props();
 
     let fullname = $state("John Snow");
     let username = $state("john");
 
-    type Dog = {
-        name: string;
-        imageURL: string;
-        dogPageURL: string;
-    }
-
-    let myDogs: Dog[] = [
-        { name: "Joey1", imageURL: "/Tame_Wolf.webp", dogPageURL: ""},
-        { name: "Gaute", imageURL: "/Tame_Wolf.webp", dogPageURL: ""},
-        { name: "Oda", imageURL: "/Tame_Wolf.webp", dogPageURL: ""},
-        { name: "Thomas", imageURL: "/Tame_Wolf.webp", dogPageURL: ""},
-        { name: "Synne", imageURL: "/Tame_Wolf.webp", dogPageURL: ""},
-        { name: "Emil", imageURL: "/Tame_Wolf.webp", dogPageURL: ""},
-        { name: "Marvin Bagley III", imageURL: "/Tame_Wolf.webp", dogPageURL: ""},
-    ]
+    let my_dogs = data.my_dogs;
 </script>
 
-<div class="container">
-    <div class="userbox">
-        <h2>{fullname}</h2>
-        <h2>@{username}</h2>
-    </div>
+<div class="wrapper">
     <div class="content">
-        <div class="content-controls">
-            <button>History</button>
-            <button>My dogs</button>
+        <div class="user-section">
+            <Avatar sourceImage={'/uploads/avatars/jarvis.jpg'} size={100}/>
+            <div class="userbox">
+                <h2>{fullname}</h2>
+                <h2>@{username}</h2>
+            </div>
         </div>
         <div class="feed">
-            {#each myDogs as dog}
-                <DogIcon {...dog}/>
+            {#each data.my_dogs as dog }
+                <DogIcon name={dog.name} breed={dog.breed} imageURL={dog.avatar_url} dogPageURL="" />
             {/each}
         </div>
     </div>
@@ -43,32 +32,39 @@
 
 
 <style>
-    .container {
+    .wrapper {
+        width: 100%;
+        height: 100%;
         display: flex;
         align-items: center;
         flex-direction: column;
-        height: 500px;
-
     }
+
     .content{
-        background-color: white;
         width: 50%;
-        height: 75%;
-        padding: 10px;
+        height: 2000px;
+        padding: 50px;
+        background-color: rgb(from var(--font-color) r g b / 8%);
         
     }
-    .userbox{
-
+    
+    .user-section{
+        display: flex;
+        gap: 32px;
     }
+
     .content-controls{
+        padding-top: 100px;
         display: flex;
         flex-direction: row;
     }
+
     .feed{
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-        gap: 16px;
-        place-items: center;
-        padding: 10px;
+        padding-top: 100px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        justify-content: center;
+        gap: 64px;
     }
 </style>
