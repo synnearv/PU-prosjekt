@@ -94,7 +94,7 @@
 		--color-error: red;
 		--color-hot-pink: #ff77bb;
 		--color-hot-pink-hover: #fa59a9;
-		--color-hot-pink-active: #fa59a9;
+		--color-hot-pink-active: #fd3599;
 		/* --color-background: #f7f8fa; */
 		--color-surface: #ffff;
 		--color_text_primary: #1f2937;
