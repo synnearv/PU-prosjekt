@@ -1,4 +1,4 @@
-<script lang="ts">
+<script context="module" lang="ts">
 
   export type Registration = {
     id: string;
@@ -10,9 +10,13 @@
     id: string;
     name: string;
     description: string;
-    data_time: string;
+    date_time: string;
     image_URL: string | null; //does not have to be a picture, can be empty
   }
+
+</script>
+
+<script lang="ts">
 
   export let data: {
     competition: Competition;
@@ -82,7 +86,7 @@
                 <div class="dots">
                     {#each //data. //add data when you have database
                     registrations as r (r.id)}
-                        <span class="dot" title={r.userName} />
+                        <span class="dot" title={r.userName} ></span>
                     {/each}
                 </div>
             </div>
