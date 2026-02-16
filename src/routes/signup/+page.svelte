@@ -1,44 +1,18 @@
 <script lang="ts">
+	import { validatePassword } from "$lib/signup";
+
 	let password = $state<string>("");
 	let passwordMessage = $state<string>("Password must include: ");
+	let missingPasswordRequirements = $state<string[]>([]);
+	let isMissingPasswordRequirements = $derived<boolean>(password !== "" && missingPasswordRequirements.length > 0);
+	
 	let type = $state<string>("password");
 	let passwordInput: HTMLInputElement;
 
-	const upperCaseLetterRegEx: RegExp = /.*?[A-Z]/;
-	const lowerCaseLetterRegEx: RegExp = /.*?[a-z]/;
-	const digitRegEx: RegExp = /.*?[0-9]/;
-	const specialCharacterRegEx: RegExp = /.*?[#?!@$%&*-]/;
-	const enoughCharactersRegEx: RegExp = /.{8,}/;
-
-	let missingPasswordRequirements = $state<string[]>([]);
-	const missingUpperCaseLetter: string = "an uppercase letter (A-Z)";
-	const missingLowerCaseLetter: string = "a lowercase letter (a-z)";
-	const missingDigit: string = "a digit (0-9)";
-	const missingSpecialCharacter: string = "a special character (#?!@$%&*-)";
-	const missingEnoughCharacters: string = "at least 8 characters";
-
-	let isMissingPasswordRequirements = $derived<boolean>(password !== "" && missingPasswordRequirements.length > 0);
-
-	const validatePassword = () => {
-		missingPasswordRequirements = [];
+	const makePasswordMessage = () => {
 		passwordMessage = "Password must include: ";
-		if (!upperCaseLetterRegEx.test(password)) {
-			missingPasswordRequirements.push(missingUpperCaseLetter)
-		}	
-		if (!lowerCaseLetterRegEx.test(password)) {
-			missingPasswordRequirements.push(missingLowerCaseLetter)
-		}
-		if (!digitRegEx.test(password)) {
-			missingPasswordRequirements.push(missingDigit)
-		}
-		if (!specialCharacterRegEx.test(password)) {
-			missingPasswordRequirements.push(missingSpecialCharacter)
-		}
-		if (!enoughCharactersRegEx.test(password)) {
-			missingPasswordRequirements.push(missingEnoughCharacters)
-		}
-
-		passwordMessage = passwordMessage + missingPasswordRequirements.join(", ")
+		missingPasswordRequirements = [];
+		passwordMessage += validatePassword(password, missingPasswordRequirements);
 	}
 
 	const changePasswordVisibility = () => {
@@ -81,7 +55,7 @@
 					<input name="username" placeholder="Username" required />
 				</div>
 				<div class="input-row input-row-password">
-					<input id="password-input" type={type} class:unvalid-password ={isMissingPasswordRequirements} name="password" placeholder="Password" required bind:value={password} oninput={validatePassword} bind:this={passwordInput} />
+					<input id="password-input" type={type} class:unvalid-password ={isMissingPasswordRequirements} name="password" placeholder="Password" required bind:value={password} oninput={makePasswordMessage} bind:this={passwordInput} />
 					<button tabindex="-1" type="button" id="eye-icons-wrapper" onclick={changePasswordVisibility}>
 						{#if type==="password"}
 						<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke=var(--color-border-grey) class="eye-icon">
