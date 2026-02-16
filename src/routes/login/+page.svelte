@@ -1,11 +1,3 @@
-<script>
-    import { goto } from "$app/navigation";
-
-    function handleRegisterClick() {
-        goto('/signup');
-    }
-
-</script>
 
 <div id="wrapper">
 <div id="image">
@@ -32,20 +24,20 @@
                 placeholder="Password"
             />
         </div>
+        <a class="hyperlinks" id="forgotpassword" href="forgotpassword">Forgot password?</a>
     </div>
     <button id="login-button" type="submit">Login</button>
     </form>
-    <button id="register-button" type="button" onclick={handleRegisterClick}>Register</button>
-    <a id="forgotpassword" href="forgotpassword">Forgot password</a>
+   <p id="signup"> Don't have an account? <a id="signup-link" class="hyperlinks" href="/signup">Sign up</a> </p> 
 </div>
 </div>
 
 
 <style>
     #logo {
-        width: 300px;
-        height: 300px;
-
+        margin-top: 10px;
+        width: 250px;
+        height: 250px;
     }
 
     #image {
@@ -62,7 +54,7 @@
     .input-row {
         display: flex;
         align-items: center;
-        gap: 10px;
+        gap: 10px;  
     }
 
     .input-row img {
@@ -74,7 +66,7 @@
         padding: 10px;
         width: 250px;
     }
-
+    
     #wrapper {
         display: flex;
         height: 100vh;
@@ -85,20 +77,35 @@
     }
 
     form {
-        margin-top: 20px;
+        margin-top: 30px;
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 40px;
+        gap: 0px;
+    }
+
+    .hyperlinks {
+        color: #a51c2b;
+        text-decoration: none;
+    }
+
+    .hyperlinks:hover {
+        text-decoration: underline;
     }
 
     #forgotpassword {
-        margin: 20px;
-        text-decoration: none;
+        font-size: 13px;
+        margin-top: -15px;
+        margin-left: auto;
     }
-    
-    #forgotpassword:hover {
-        text-decoration: underline;
+
+    #signup {
+        margin-top: 20px;
+        font-size: 14px;
+    }
+
+    #signup-link {
+        font-weight: bold;
     }
 
     #login-info {
@@ -118,23 +125,9 @@
         border: 1px solid transparent;
         cursor: pointer;
     }
-
-    #register-button {
-        margin: 20px;
-        background-color: (243, 243, 243);
-        border: solid black 0.5px;
-    }
-
-    #register-button:hover {
-        background-color: rgb(227, 227, 227);
-    }
-
-    #register-button:active {
-        background-color: rgb(208, 208, 208);
-    }
     
     #login-button {
-        margin-top: 30px;
+        margin-top: 50px;
         background-color: #ff77bb;
         color: white;
         border: solid black 0.5px;
