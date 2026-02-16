@@ -1,0 +1,31 @@
+[data-theme='light'] {
+	--primary-color: #dc143c;
+	--secondary-color: #f75270;
+	--font-color: #000000;
+	--bg-color: #f3faff;
+	--nav-color: #ffffff;
+	--heading-color: #ffee00;
+}
+
+[data-theme='dark'] {
+	--primary-color: #f75270;
+	--secondary-color: #f7cac9;
+	--font-color: #ffffff;
+	--bg-color: #1c1e22;
+	--nav-color: #23272f;
+	--heading-color: #ffee00;
+}
+
+:root {
+	background-color: var(--bg-color);
+
+	/* Font */
+	font-family: Verdana, sans-serif;
+	font-weight: 500;
+	font-style: normal;
+	color: var(--font-color);
+}
+
+body {
+	margin: 0;
+}
