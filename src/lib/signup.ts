@@ -1,18 +1,5 @@
-export type PasswordRegEx = {
-    upperCaseLetter: RegExp;
-    lowerCaseLetter: RegExp;
-    digit: RegExp;
-    specialCharacters: RegExp;
-    enoughCharacters: RegExp;
-};
+import type { MissingRequirementsMessage, PasswordRegEx } from "./types";
 
-export type MissingRequirementsMessage = {
-    upperCaseLetter: string;
-    lowerCaseLetter: string;
-    digit: string;
-    specialCharacters: string;
-    enoughCharacters: string;
-};
 
 export const PASSWORD_REGEX: PasswordRegEx = {
     upperCaseLetter: /.*?[A-Z]/,   
