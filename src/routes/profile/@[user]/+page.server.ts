@@ -1,6 +1,8 @@
 import type { Dog } from "$lib/server/schema";
 import type { PageLoad } from "./$types";
 
+
+
 const my_dogs: Dog[] = [
     { id: 1, owner_id: 1, name: "Tyrone", breed: "Wolf", avatar_url: "/uploads/dogs/tyrone.png" },
     { id: 2, owner_id: 1, name: "Jake", breed: "Wolf", avatar_url: "/uploads/dogs/striped_wolf.png" },
