@@ -1,5 +1,8 @@
 <script lang="ts">
 	import { validatePassword } from '$lib/signup';
+	import { enhance } from '$app/forms';
+
+	let { form } = $props();
 
 	let password = $state<string>('');
 	let passwordMessage = $state<string>('Password must include: ');
@@ -43,13 +46,13 @@
 		</div>
 
 		<h2>Create Account</h2>
-		<form onsubmit={handleSubmit}>
+		<form method="POST" use:enhance onsubmit={handleSubmit}>
 			<div id="inputs">
 				<div class="input-row">
-					<input name="first-name" placeholder="First Name" required />
+					<input name="firstname" placeholder="First Name" required />
 				</div>
 				<div class="input-row">
-					<input name="last-name" placeholder="Last Name" required />
+					<input name="lastname" placeholder="Last Name" required />
 				</div>
 				<div class="input-row">
 					<input type="email" name="email" placeholder="Email" required />
@@ -116,6 +119,9 @@
 				<div id="password-message-area">
 					{#if isMissingPasswordRequirements}
 						<p id="password-message">{passwordMessage}</p>
+					{/if}
+					{#if form?.error}
+						<p id="password-message">{form.error}</p>
 					{/if}
 				</div>
 			</div>
@@ -207,6 +213,7 @@
 
 	.input-row input {
 		background: var(--color-surface);
+		color: var(--color-text-secondary);
 		padding: 10px;
 		width: 250px;
 		border: var(--color-border) 1px solid;

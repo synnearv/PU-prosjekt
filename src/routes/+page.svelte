@@ -9,8 +9,6 @@
 	import sort from '$lib/assets/competitions/sort.svg';
 </script>
 
-<div id="header"></div>
-
 <div id="body">
 	<div id="left">
 		<h2>You're signed up to</h2>
