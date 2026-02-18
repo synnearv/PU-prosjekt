@@ -7,7 +7,9 @@
 <div id="card">
 	<img
 		id="image"
-		src={competition.image_url !== '' ? competition.image_url : '_assets/placeholder_image.png'}
+		src={competition.image_url !== ''
+			? competition.image_url
+			: '$lib/assets | update/placeholder_image.png'}
 		alt={competition.name}
 	/>
 

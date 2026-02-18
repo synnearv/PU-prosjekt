@@ -1,148 +1,159 @@
+<script lang="ts">
+	import person from '$lib/assets/login/person.svg';
+	import lock from '$lib/assets/login/lock.svg';
+</script>
 
 <div id="wrapper">
-<div id="image">
-    <p>Replace text with image</p>
+	<div id="image">
+		<img alt="Dog running" src="images/dog_background.jpg" />
+	</div>
+
+	<div id="login-info">
+		<img id="logo" alt="Hot Dog Logo" src="logo/hot-dog-logo.png" />
+
+		<form>
+			<div id="inputs">
+				<div class="input-row">
+					<img alt="Person icon " src={person} />
+					<input name="username" placeholder="Email / Username" />
+				</div>
+
+				<div class="input-row">
+					<img alt="Lock icon" src={lock} />
+					<input name="password" placeholder="Password" />
+				</div>
+				<a class="hyperlinks" id="forgotpassword" href="forgotpassword">Forgot password?</a>
+			</div>
+			<button id="login-button" type="submit">Login</button>
+		</form>
+		<p id="signup">
+			Don't have an account? <a id="signup-link" class="hyperlinks" href="/signup">Sign up</a>
+		</p>
+	</div>
 </div>
-
-<div id="login-info">
-    <img id="logo" alt="Hot Dog Logo" src='/login/hot-dog-logo.png'/>
-
-    <form>
-    <div id="inputs">
-        <div class="input-row">
-            <img alt="Person icon " src='/login/person.svg' />
-            <input
-                name="username"
-                placeholder="Email / Username"
-            />
-        </div>
-
-        <div class="input-row">
-            <img alt="Lock icon" src='/login/lock.svg' />
-            <input
-                name="password"
-                placeholder="Password"
-            />
-        </div>
-        <a class="hyperlinks" id="forgotpassword" href="forgotpassword">Forgot password?</a>
-    </div>
-    <button id="login-button" type="submit">Login</button>
-    </form>
-   <p id="signup"> Don't have an account? <a id="signup-link" class="hyperlinks" href="/signup">Sign up</a> </p> 
-</div>
-</div>
-
 
 <style>
-    #logo {
-        margin-top: 10px;
-        width: 250px;
-        height: 250px;
-    }
+	#logo {
+		margin-top: 10px;
+		width: 250px;
+		height: 250px;
+	}
 
-    #image {
-        display: flex;
-        align-items: center;
-    }
+	#image {
+		flex: 5;
+		overflow: hidden;
+		position: relative;
+	}
 
-    #inputs {
-        display: flex;
-        flex-direction: column;
-        gap: 30px;
-    }
+	#image img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		display: block;
+	}
+	#inputs {
+		display: flex;
+		flex-direction: column;
+		gap: 30px;
+	}
 
-    .input-row {
-        display: flex;
-        align-items: center;
-        gap: 10px;  
-    }
+	.input-row {
+		display: flex;
+		align-items: center;
+		gap: 10px;
+	}
 
-    .input-row img {
-        width: 30px;
-        height: 30px;
-    }
+	.input-row img {
+		width: 30px;
+		height: 30px;
+	}
 
-    .input-row input {
-        padding: 10px;
-        width: 250px;
-    }
-    
-    #wrapper {
-        display: flex;
-        height: 100vh;
-    }
+	.input-row input {
+		background: var(--color-surface);
+		padding: 10px;
+		width: 250px;
+		border: var(--color-border) 1px solid;
+		border-radius: 4px;
+		background: var(--color-surface);
+	}
 
-    #image {
-        flex: 5;
-    }
+	.input-row input:focus {
+		outline: var(--color-text-secondary) 2px solid;
+		border: var(--color-text-secondary) 1px solid;
+		border-radius: 4px;
+	}
 
-    form {
-        margin-top: 30px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 0px;
-    }
+	#wrapper {
+		display: flex;
+		height: 100vh;
+	}
 
-    .hyperlinks {
-        color: #a51c2b;
-        text-decoration: none;
-    }
+	#image {
+		flex: 5;
+	}
 
-    .hyperlinks:hover {
-        text-decoration: underline;
-    }
+	form {
+		margin-top: 30px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 0px;
+	}
 
-    #forgotpassword {
-        font-size: 13px;
-        margin-top: -15px;
-        margin-left: auto;
-    }
+	.hyperlinks {
+		color: var(--color-primary-hover);
+		text-decoration: none;
+	}
 
-    #signup {
-        margin-top: 20px;
-        font-size: 14px;
-    }
+	.hyperlinks:hover {
+		text-decoration: underline;
+	}
 
-    #signup-link {
-        font-weight: bold;
-    }
+	#forgotpassword {
+		font-size: 13px;
+		margin-top: -15px;
+		margin-left: auto;
+	}
 
-    #login-info {
-        flex: 3;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        place-items: center;
-        background-color: rgb(243, 243, 243);
-    }
+	#signup {
+		margin-top: 20px;
+		font-size: 14px;
+	}
 
-    button {
-        width: 200px;
-        padding: 15px 10px;
-        font-size: 15px;
-        border-radius: 4px;
-        border: 1px solid transparent;
-        cursor: pointer;
-    }
-    
-    #login-button {
-        margin-top: 50px;
-        background-color: #ff77bb;
-        color: white;
-        border: solid black 0.5px;
-    }
+	#signup-link {
+		font-weight: bold;
+	}
 
-    #login-button:hover {
-        background-color: #fa59a9;
-    }
+	#login-info {
+		flex: 3;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		place-items: center;
+		background-color: var(--color-background);
+	}
 
-    #login-button:active {
-        background-color: #fd3599;
-    }
+	button {
+		width: 200px;
+		padding: 15px 10px;
+		font-size: 15px;
+		border-radius: 4px;
+		border: 1px solid transparent;
+		cursor: pointer;
+	}
 
+	#login-button {
+		margin-top: 50px;
+		background-color: var(--color-primary);
+		color: white;
+		border: solid var(--color-border) 0.5px;
+	}
 
+	#login-button:hover {
+		background-color: var(--color-primary-hover);
+	}
+
+	#login-button:active {
+		background-color: var(--color-primary-active);
+	}
 </style>
-
-
-

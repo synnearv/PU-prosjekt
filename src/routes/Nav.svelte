@@ -1,13 +1,11 @@
 <script>
 	import { page } from '$app/state';
-	import logo from '$lib/assets/logo.png';
 	import LightSwitch from '$lib/components/ThemeSwitch.svelte';
-	import SearchBar from '$lib/components/SearchBar.svelte';
 </script>
 
 <div class="navbar">
 	<a class="nav-logo" href="/">
-		<img src={logo} alt="Hot Dog Logo" />
+		<img src={'/logo/logo.png'} alt="Hot Dog Logo" />
 	</a>
 	<div class="links">
 		<a href="/" class:active={page.url.pathname === '/'}>Home</a>
@@ -20,9 +18,6 @@
 		{/if}
 	</div>
 	<div class="menu">
-		<div class="menu-search-bar">
-			<SearchBar />
-		</div>
 		<div class="menu-button">
 			<LightSwitch />
 		</div>
@@ -31,12 +26,14 @@
 
 <style>
 	.navbar {
-		padding: 0 32px 0 32px;
+		padding: 0 32px;
 		display: grid;
 		grid-template-columns: 200px 1fr 2fr;
 		grid-template-rows: 60px;
-		box-shadow: 0 0px 16px 0 rgba(0, 0, 0, 0.2);
-		background-color: var(--nav-color);
+		box-shadow: var(--shadow-main);
+		background-color: var(--color-surface);
+		position: relative;
+		z-index: 50;
 	}
 
 	.nav-logo {
@@ -55,22 +52,23 @@
 	}
 
 	.links a {
-		padding: 0 8px 0 8px;
+		padding: 0 8px;
 		display: flex;
 		align-items: center;
 		text-decoration: none;
 		box-sizing: border-box;
 		border-bottom: 2px solid transparent;
-		color: var(--font-color);
+		color: var(--color-text-primary);
+		transition: border-color 0.2s ease;
 	}
 
 	.links a:hover {
-		border-bottom: 2px solid rgb(from var(--font-color) r g b / 8%);
+		border-bottom: 2px solid var(--color-surface-alt);
 	}
 
 	.links a.active {
-		color: var(--primary-color);
-		border-bottom: 2px solid var(--primary-color);
+		color: var(--color-primary);
+		border-bottom: 2px solid var(--color-primary);
 	}
 
 	.menu {
