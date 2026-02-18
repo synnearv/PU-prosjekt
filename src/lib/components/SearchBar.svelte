@@ -22,7 +22,7 @@
 		align-items: center;
 		border-radius: 32px;
 		padding: 0 8px 0 8px;
-		background-color: rgb(from var(--font-color) r g b / 8%);
+		background-color: rgb(from var(--color-text-primary) r g b / 8%);
 	}
 
 	input {
@@ -31,7 +31,7 @@
 		flex-grow: 100%;
 		border: none;
 		background-color: transparent;
-		color: var(--font-color);
+		color: var(--color-text-primary);
 	}
 
 	input:focus {
@@ -40,6 +40,6 @@
 	}
 
 	svg {
-		fill: var(--font-color);
+		fill: var(--color-text-primary);
 	}
 </style>

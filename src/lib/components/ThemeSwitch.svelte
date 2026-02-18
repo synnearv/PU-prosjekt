@@ -33,10 +33,10 @@
 	}
 
 	button:hover {
-		background-color: rgb(from var(--font-color) r g b / 8%);
+		background-color: rgb(from var(--color-text-primary) r g b / 8%);
 	}
 
 	svg {
-		fill: var(--font-color);
+		fill: var(--color-text-primary);
 	}
 </style>
