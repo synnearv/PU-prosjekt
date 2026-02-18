@@ -6,7 +6,6 @@
 	import { goto } from '$app/navigation';
 	import type { User } from '$lib/types';
 
-	// This allows the page to display error messages returned from your +page.server.ts
 	let { form } = $props();
 </script>
 
@@ -25,7 +24,7 @@
 					if (result.type === 'success' && result.data) {
 						setLoggedInUser(result.data as unknown as User);
 
-						await goto('/signup');
+						await goto('/');
 					} else {
 						await update();
 					}
