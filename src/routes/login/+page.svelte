@@ -1,9 +1,11 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
+	import { setLoggedInUser } from '$lib/currentUser.svelte.js';
 	import person from '$lib/assets/login/person.svg';
 	import lock from '$lib/assets/login/lock.svg';
+	import { goto } from '$app/navigation';
+	import type { User } from '$lib/types';
 
-	// This allows the page to display error messages returned from your +page.server.ts
 	let { form } = $props();
 </script>
 
@@ -15,7 +17,20 @@
 	<div id="login-info">
 		<img id="logo" alt="Hot Dog Logo" src="logo/hot-dog-logo.png" />
 
-		<form method="POST" use:enhance>
+		<form
+			method="POST"
+			use:enhance={() => {
+				return async ({ result, update }) => {
+					if (result.type === 'success' && result.data) {
+						setLoggedInUser(result.data as unknown as User);
+
+						await goto('/');
+					} else {
+						await update();
+					}
+				};
+			}}
+		>
 			<div id="inputs">
 				<div class="input-row">
 					<img alt="Person icon " src={person} />
