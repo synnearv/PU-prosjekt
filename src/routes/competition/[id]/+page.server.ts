@@ -3,9 +3,9 @@ import { competitions } from '$lib/testData';
 import { error } from '@sveltejs/kit';
 
 export function load({ params }) {
-	const competition = competitions.find((c) => c.id === Number(params.id));
+  const competition = competitions.find((c) => c.id === Number(params.id));
 
-	if (!competition) throw error(404, 'Competition not found');
+  if (!competition) throw error(404, 'Competition not found');
 
-	return { competition };
+  return { competition };
 }

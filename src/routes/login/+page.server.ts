@@ -1,6 +1,6 @@
-import { fail, redirect } from '@sveltejs/kit';
+import { fail } from '@sveltejs/kit';
 import { UserRepo } from '$lib/server/queries/users';
-import { auth } from '$lib/server/auth'
+import type { User } from '$lib/types'
 
 export const actions = {
   default: async ({ request }) => {
@@ -12,8 +12,9 @@ export const actions = {
       return fail(400, { error: 'Please enter both fields.' });
     }
 
+    let user: User | null
     try {
-      const user = await UserRepo.validateUser(username, password);
+      user = await UserRepo.validateUser(username, password);
 
       if (!user) {
         return fail(401, { error: 'Invalid username or password.' });
@@ -23,8 +24,6 @@ export const actions = {
       console.error(err);
       return fail(500, { error: 'Internal server error.' });
     }
-
-    auth.isLoggedIn = true;
-    throw redirect(303, '/');
+    return user;
   }
 };

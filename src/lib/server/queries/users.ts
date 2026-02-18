@@ -1,4 +1,5 @@
 import { pool } from '$lib/server/db';
+import type { User } from '$lib/types';
 
 export const UserRepo = {
   async findById(id: number) {
@@ -15,12 +16,12 @@ export const UserRepo = {
     );
     return result.rows[0];
   },
-  async validateUser(login: string, password_plain: string) {
-    // This checks if the 'login' matches either the username OR the email
+
+  async validateUser(login: string, password_hash: string): Promise<User | null> {
     const result = await pool.query(
-      'SELECT id, username FROM users WHERE (username = $1 OR email = $1) AND password_hash = $2',
-      [login, password_plain]
+      'SELECT id, username, firstname, lastname, email FROM users WHERE (username = $1 OR email = $1) AND password_hash = $2',
+      [login, password_hash]
     );
-    return result.rows[0]; // Returns the user if found, or undefined
+    return result.rows[0] || null;
   }
 };
