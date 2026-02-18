@@ -1,29 +1,62 @@
 [data-theme='light'] {
-	--primary-color: #dc143c;
-	--secondary-color: #f75270;
-	--font-color: #000000;
-	--bg-color: #f3faff;
-	--nav-color: #ffffff;
-	--heading-color: #ffee00;
+	--color-background: #f7f8fa;
+	--color-surface: #ffffff;
+	--color-surface-alt: #f1f3f6;
+	--color-text-primary: #1f2937;
+	--color-text-secondary: #4b5563;
+	--color-text-muted: #9ca3af;
+	--color-border: #d1d5db;
+	--color-border-focus: #2563eb;
+	--color-primary: #ff77bb;
+	--color-primary-hover: #e04d8f;
+	--color-primary-active: #d13576;
+	--color-danger: #a51c2b;
+	--color-danger-surface: #fee2e2;
+	--color-accent: #fecfe8;
+
+	--shadow-main: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
 }
 
 [data-theme='dark'] {
-	--primary-color: #f75270;
-	--secondary-color: #f7cac9;
-	--font-color: #ffffff;
-	--bg-color: #1c1e22;
-	--nav-color: #23272f;
-	--heading-color: #ffee00;
+	--color-background: #1a1617;
+	--color-surface: #252122;
+	--color-surface-alt: #312b2c;
+	--color-text-primary: #f5f0f1;
+	--color-text-secondary: #d1c7c9;
+	--color-text-muted: #948688;
+	--color-border: #312b2c;
+	--color-border-focus: #2563eb;
+	--color-primary: #ff77bb;
+	/* --color-primary: #f75270;  old */
+	--color-primary-hover: #ff6b85;
+	--color-primary-active: #e04d8f;
+	--color-danger: #a51c2b;
+	--color-danger-surface: #3b1a1a;
+	--color-accent: #fecfe815;
+
+	--shadow-main: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -6px rgba(0, 0, 0, 0.4);
 }
 
 :root {
-	background-color: var(--bg-color);
+	background-color: var(--color-background);
+	width: 100vw;
+	height: 100vh;
+	margin: 0;
 
-	/* Font */
-	font-family: Verdana, sans-serif;
-	font-weight: 500;
+	font-family: 'Inter', sans-serif;
 	font-style: normal;
-	color: var(--font-color);
+	font-size: 19px;
+	font-weight: 600;
+	color: var(--color-text-primary);
+	overflow: hidden;
+}
+
+img {
+	/* prevent users from dragging images */
+	user-select: none;
+	-webkit-user-select: none;
+	-webkit-user-drag: none;
+	-webkit-touch-callout: none;
 }
 
 body {
