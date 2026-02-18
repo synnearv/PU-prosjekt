@@ -9,6 +9,7 @@
 	</a>
 	<div class="links">
 		<a href="/" class:active={page.url.pathname === '/'}>Home</a>
+		<a href="/profile/1" class:active={page.url.pathname.startsWith('/profile/')}>My Profile</a>
 		{#if page.data.user}
 			<!-- <a href="/profile" class:active={page.url.pathname === '/profile'}>My profile</a>
             <a href="/settings" class:active={page.url.pathname === '/settings'}>Settings</a> -->
