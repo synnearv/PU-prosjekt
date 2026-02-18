@@ -1,6 +1,10 @@
 <script lang="ts">
+	import { enhance } from '$app/forms';
 	import person from '$lib/assets/login/person.svg';
 	import lock from '$lib/assets/login/lock.svg';
+
+	// This allows the page to display error messages returned from your +page.server.ts
+	let { form } = $props();
 </script>
 
 <div id="wrapper">
@@ -11,18 +15,24 @@
 	<div id="login-info">
 		<img id="logo" alt="Hot Dog Logo" src="logo/hot-dog-logo.png" />
 
-		<form>
+		<form method="POST" use:enhance>
 			<div id="inputs">
 				<div class="input-row">
 					<img alt="Person icon " src={person} />
-					<input name="username" placeholder="Email / Username" />
+					<input name="username" placeholder="Email / Username" required />
 				</div>
 
 				<div class="input-row">
 					<img alt="Lock icon" src={lock} />
-					<input name="password" placeholder="Password" />
+					<input type="password" name="password" placeholder="Password" required />
 				</div>
 				<a class="hyperlinks" id="forgotpassword" href="forgotpassword">Forgot password?</a>
+
+				{#if form?.error}
+					<p style="color: var(--color-danger); font-size: 0.8rem; margin: 0; text-align: center;">
+						{form.error}
+					</p>
+				{/if}
 			</div>
 			<button id="login-button" type="submit">Login</button>
 		</form>
@@ -69,7 +79,7 @@
 	}
 
 	.input-row input {
-		background: var(--color-surface);
+		color: var(--color-text-secondary);
 		padding: 10px;
 		width: 250px;
 		border: var(--color-border) 1px solid;
