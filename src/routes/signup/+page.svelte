@@ -63,7 +63,7 @@
 				<div class="input-row input-row-password">
 					<input
 						id="password-input"
-						{type}
+						type={type}
 						class:unvalid-password={isMissingPasswordRequirements}
 						name="password"
 						placeholder="Password"
@@ -84,7 +84,7 @@
 								fill="none"
 								viewBox="0 0 24 24"
 								stroke-width="1.5"
-								stroke="var(--color-border-grey)"
+								stroke="var(--color-text-secondary)"
 								class="eye-icon"
 							>
 								<path
@@ -99,7 +99,7 @@
 								fill="none"
 								viewBox="0 0 24 24"
 								stroke-width="1.5"
-								stroke="var(--color-border-grey)"
+								stroke="var(--color-text-secondary)"
 								class="eye-icon"
 							>
 								<path
@@ -242,6 +242,7 @@
 		background-color: transparent;
 		border: none;
 		outline: none;
+		cursor: pointer;
 	}
 
 	.eye-icon {
