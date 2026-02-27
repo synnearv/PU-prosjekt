@@ -158,14 +158,14 @@
 		color: var(--color-text-secondary);
 		padding: 10px;
 		width: 250px;
-		border: var(--color-border) 1px solid;
+		border: var(--color-input-border-outline) 1px solid;
 		border-radius: 4px;
 		background: var(--color-surface);
 	}
 
 	.input-row input:focus {
-		outline: var(--color-text-secondary) 2px solid;
-		border: var(--color-text-secondary) 1px solid;
+		outline: var(--color-input-border-outline-focus) 2px solid;
+		border: var(--color-input-border-outline-focus) 1px solid;
 		border-radius: 4px;
 	}
 
