@@ -79,9 +79,4 @@
 		height: 48px;
 		width: 48px;
 	}
-
-	.menu-search-bar {
-		height: 32px;
-		width: 256px;
-	}
 </style>

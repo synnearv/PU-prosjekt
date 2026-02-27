@@ -49,6 +49,10 @@
 	color: var(--color-text-primary);
 }
 
+body {
+	margin: 0;
+}
+
 img {
 	/* prevent users from dragging images */
 	user-select: none;
