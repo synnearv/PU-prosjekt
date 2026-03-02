@@ -118,7 +118,7 @@ async function main() {
     // ================================
     // Some manual seeding
     // ================================
-    const admin: InsertUser = { firstName: "Bob", lastName: "By", username: "Bobby", email: "bobby@gmail.com", password: "1234", role: "admin", avatar: userAvatarMeidaIds[0] };
+    const admin: InsertUser = { firstName: "Bob", lastName: "By", username: "bobby", email: "bobby@gmail.com", password: "1234", role: "admin", avatar: userAvatarMeidaIds[0] };
     const adminId = await db.insert(schema.users).values(admin);
 
     const userIds = (await db.select({ id: schema.users.id }).from(schema.users)).map(row => row.id);
