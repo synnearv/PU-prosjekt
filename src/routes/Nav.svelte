@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/state';
 	import LightSwitch from '$lib/components/ThemeSwitch.svelte';
-	import { auth, signOut } from '$lib/currentUser.svelte';
 </script>
 
 <div class="navbar">
@@ -11,21 +10,9 @@
 	<div class="links">
 		<a href="/" class:active={page.url.pathname === '/'}>Home</a>
 		<a href="/profile/1" class:active={page.url.pathname.startsWith('/profile/')}>My Profile</a>
-		{#if !auth.user}
 			<a href="/login" class:active={page.url.pathname === '/login'}>Log in</a>
 			<a href="/signup" class:active={page.url.pathname === '/signup'}>Sign up</a>
-		{:else}
-			<a
-				href="/login"
-				onclick={(e) => {
-					e.preventDefault();
-					signOut();
-				}}
-				role="button"
-			>
-				Sign Out
-			</a>
-		{/if}
+			<a href="/login" role="button">Sign Out</a>
 	</div>
 	<div class="menu">
 		<div class="menu-button">
@@ -91,10 +78,5 @@
 	.menu-button {
 		height: 48px;
 		width: 48px;
-	}
-
-	.menu-search-bar {
-		height: 32px;
-		width: 256px;
 	}
 </style>
