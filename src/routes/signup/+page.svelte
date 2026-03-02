@@ -63,7 +63,7 @@
 				<div class="input-row input-row-password">
 					<input
 						id="password-input"
-						{type}
+						type={type}
 						class:unvalid-password={isMissingPasswordRequirements}
 						name="password"
 						placeholder="Password"
@@ -84,7 +84,7 @@
 								fill="none"
 								viewBox="0 0 24 24"
 								stroke-width="1.5"
-								stroke="var(--color-border-grey)"
+								stroke="var(--color-text-secondary)"
 								class="eye-icon"
 							>
 								<path
@@ -99,7 +99,7 @@
 								fill="none"
 								viewBox="0 0 24 24"
 								stroke-width="1.5"
-								stroke="var(--color-border-grey)"
+								stroke="var(--color-text-secondary)"
 								class="eye-icon"
 							>
 								<path
@@ -216,13 +216,13 @@
 		color: var(--color-text-secondary);
 		padding: 10px;
 		width: 250px;
-		border: var(--color-border) 1px solid;
+		border: var(--color-input-border-outline) 1px solid;
 		border-radius: 4px;
 	}
 
 	.input-row input:focus {
-		outline: var(--color-text-secondary) 2px solid;
-		border: var(--color-text-secondary) 1px solid;
+		outline: var(--color-input-border-outline-focus) 2px solid;
+		border: var(--color-input-border-outline-focus) 1px solid;
 		border-radius: 4px;
 	}
 
@@ -242,6 +242,7 @@
 		background-color: transparent;
 		border: none;
 		outline: none;
+		cursor: pointer;
 	}
 
 	.eye-icon {
@@ -250,7 +251,7 @@
 	}
 
 	.input-row input.unvalid-password {
-		border: var(--color-error) 1px solid;
+		border: var(--color-danger) 1px solid;
 	}
 
 	.input-row input.unvalid-password:focus {
@@ -267,7 +268,7 @@
 	#password-message {
 		margin: 0px;
 		font-size: 10px;
-		color: var(--color-error);
+		color: var(--color-danger);
 	}
 
 	#terms-and-service {
